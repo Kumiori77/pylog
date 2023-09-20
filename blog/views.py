@@ -1,7 +1,9 @@
 from typing import Any
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from django.urls import reverse_lazy
 from . import models
+from . import forms
 
 # Create your views here.
 class IndexView(TemplateView):
@@ -32,6 +34,33 @@ class PostDetail(TemplateView):
         context["post"] = post
 
         return context
+    
+
+class PostAdd(FormView) :
+    template_name = "post_add.html"
+
+    form_class = forms.AddPostForm
+
+    # success_url = reverse_lazy('blog:postList')
+
+    posted_id = None
+
+    def form_valid(self, form):
+
+        form.save()
+
+        self.posted_id = form.instance.id
+        
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        # 요청 성공 후 이동할 postID와 페이지 반환
+
+        success_url = reverse_lazy('blog:postDetail', kwargs={"post_id": self.posted_id})
+   
+        return success_url
+    
+
 
         
 

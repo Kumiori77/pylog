@@ -11,6 +11,7 @@ urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
     path("posts/", views.PostList.as_view(), name="postList"),
     path("posts/<int:post_id>/", views.PostDetail.as_view(), name="postDetail"),
+    path("posts/add/", views.PostAdd.as_view(), name="post_add"),
 ]
 
 # 유저가 업로드한 파일을 보기위한 설정

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="navbar">
+        <span>pylog</span>
+    </div>
+
+    <div id="post-list">
+
+    <ul class="posts">
+        {% for post in posts %}
+
+            <li class="post">
+                <div>
+                    {% comment %} 여기 좀 수장 {% endcomment %}
+                    <a href={% url "blog:postDetail" post_id=post.id %}><h3>{{ post.title }}</h3></a>
+                </div>
+
+                <p>{{ post.content }}</p>
+                <ul class="comments">
+                    {% for comment in  post.comment_set.all %}
+                    <li class="comment">{{ comment.content }}</li>
+                    {% empty %}
+                    <li class="comment-empty">등록된 댓글이 없습니다.</li>
+                    {% endfor %}
+                </ul>
+                {% if post.thumbnail %}
+                <img src="{{ post.thumbnail.url }}">
+                {% else %}
+                <img src="">
+                {% endif %}
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <div>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="navbar"> 
+        {% if post.thumbnail %}
+        <img src="{{ post.thumbnail.url }}">
+        {% endif %}
+        <span>{{ post.title }}</span>
+    </div>
+
+    <div id="post-detail">
+        <p>{{ post.content | linebreaksbr }}</p>
+
+        <ul class="comments">
+            {% for comment in post.comment_set.all %}
+            <li class="comment">{{ comment.content }}</li>
+            {% empty %}
+            <li class="comment-empty">댓글 없음</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</body>
+</html>

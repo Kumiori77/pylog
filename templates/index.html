@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="index">
+    <h1><a href="{% url "blog:postList" %}">Pylog</a></h1>
+    <small>Lift is short, You need Python</small>
+    </div>
+</body>
+</html>

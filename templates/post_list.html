@@ -20,7 +20,7 @@
 
             <li class="post">
                 <div>
-                    {% comment %} 여기 좀 수장 {% endcomment %}
+                    {% comment %} 여기 좀 수jung {% endcomment %}
                     <a href={% url "blog:postDetail" post_id=post.id %}><h3>{{ post.title }}</h3></a>
                 </div>
 
@@ -29,7 +29,7 @@
                     {% for comment in  post.comment_set.all %}
                     <li class="comment">{{ comment.content }}</li>
                     {% empty %}
-                    <li class="comment-empty">등록된 댓글이 없습니다.</li>
+                    <li class="comment-empty">등록된 댓글이 아직 없습니다.</li>
                     {% endfor %}
                 </ul>
                 {% if post.thumbnail %}

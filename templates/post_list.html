@@ -20,8 +20,7 @@
 
             <li class="post">
                 <div>
-                    {% comment %} 여기 좀 수jung {% endcomment %}
-                    <a href={% url "blog:postDetail" post_id=post.id %}><h3>{{ post.title }}</h3></a>
+                    <a href={% url "blog:postDetail" post_id=post.id %}><h2>{{ post.title }}</h2></a>
                 </div>
 
                 <p>{{ post.content }}</p>

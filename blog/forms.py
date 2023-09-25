@@ -6,11 +6,12 @@ class AddPostForm(forms.ModelForm):
     class Meta:
         model = models.Post
 
-        fields = ["title", "content"]
+        fields = ["title", "content", "thumbnail"]
 
         labels = {
             "title":"제목",
-            "content":"내용 "
+            "content":"내용 ",
+            "thumbnail":"썸네일"
         }
 
 # 댓글 폼

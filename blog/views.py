@@ -67,6 +67,11 @@ class PostAdd(FormView) :
 
     def form_valid(self, form):
 
+        # 이미지 파일 받기
+        thumbnail = form.cleaned_data["thumbnail"]
+
+        form.instance.thumbnail = thumbnail
+
         form.save()
 
         self.posted_id = form.instance.id

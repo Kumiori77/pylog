@@ -15,9 +15,11 @@
     </div>
 
     <div id="post-add">
-        <form method="POST"> 
+        <form method="POST" > 
             {% csrf_token %}
             {{ form.as_p }}
+
+
             <button type="submit" class="btn btn-primary">작성</button> 
         </form>
     </div>

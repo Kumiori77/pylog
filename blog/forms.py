@@ -1,7 +1,7 @@
 from django import forms
 from . import models
 
-# 애완 동물 추가 폼
+# 게시물 폼
 class AddPostForm(forms.ModelForm):
     class Meta:
         model = models.Post
@@ -11,4 +11,15 @@ class AddPostForm(forms.ModelForm):
         labels = {
             "title":"제목",
             "content":"내용 "
+        }
+
+# 댓글 폼
+class AddCommentForm(forms.ModelForm):
+    class Meta:
+        model = models.Comment
+
+        fields = ["content"]
+
+        labels = {
+            "content":""
         }
